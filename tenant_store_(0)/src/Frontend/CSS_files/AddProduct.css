@@ -1,0 +1,147 @@
+
+.add-product-page {
+  min-height: 100vh;
+  background: #f3f4f6;
+  color: #111827;
+  font-family: Arial, sans-serif;
+}
+
+.add-product-header {
+  min-height: 76px;
+  padding: 16px 6%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.add-product-header h1 {
+  font-size: 25px;
+}
+
+.back-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.add-product-container {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.add-product-container h2 {
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.form-description {
+  color: #6b7280;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font: inherit;
+  background: #fff;
+  color: #111827;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 2px solid #2563eb;
+  border-color: #2563eb;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.save-product-button,
+.cancel-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.save-product-button {
+  background: #2563eb;
+  color: #fff;
+}
+
+.cancel-button {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.form-message {
+  color: #2563eb;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .add-product-container {
+    margin: 20px 12px;
+    padding: 22px 18px;
+  }
+
+  .add-product-container h2 {
+    font-size: 24px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .add-product-header {
+    padding: 16px 20px;
+  }
+}
