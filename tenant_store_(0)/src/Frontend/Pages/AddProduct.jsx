@@ -32,12 +32,14 @@ async function handleSubmit(event) {
   setMessage("");
 
   try {
+    const token  = sessionStorage.getItem("token");
     const response = await fetch(
       "http://localhost:5000/api/products",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, // Include the token in the Authorization header
         },
         body: JSON.stringify(product),
       }

@@ -5,7 +5,7 @@ import "dotenv/config"
 console.log("JWT secret loaded:", Boolean(process.env.JWT_SECRET));
 
 export function verifyToken(request, response, next){
-    const authHeader= request.header.authorization // get token from request header, include additional information in its headers. One such header is Authorization.
+    const authHeader= request.headers.authorization // get token from request header, include additional information in its headers. One such header is Authorization.
     if (!authHeader) { response.writeHead(401,{"Content-Type":"application/json"}) ; response.end(JSON.stringify({message:"Access denied. No token provided."})) ; return}
 
     // extract the token from the header

@@ -1,9 +1,15 @@
 import productModel from "../Data/products.js"
 import { randomUUID } from "node:crypto"    
-   
+import {verifyToken} from "../middleware/jwt.js"
 
 
 export async function addProduct(request,response) {
+
+    const isTokenValid = verifyToken(request, response)
+    if (!isTokenValid) {
+        return; // If the token is invalid, the response has already been sent in verifyToken function
+    }
+
     let body=""
     request.on("data",(chunk)=> {body+=chunk})
 
@@ -42,7 +48,8 @@ export async function addProduct(request,response) {
         currency: product.currency?.trim() || "INR",
         stock: Number(product.stock),
         imageUrl: product.imageUrl?.trim() || "",
-        tenantId: request.tenantId,  
+        // get tenant id from verifiedn jwt authentication
+        tenantId: request.tenant.id,  
       })
       // save product to mongodb
       const savedProduct = await newProduct.save()  // save the new product to the database

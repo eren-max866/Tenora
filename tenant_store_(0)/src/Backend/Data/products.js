@@ -18,6 +18,12 @@ const productSchema= new mongoose.Schema( {  // tells Node.js application what a
       heightMm: Number,
       depthMm: Number,
     },
+    // Store the ID of the tenant who owns this product
+    tenantId: {
+        type: String,
+        required: true
+    },
+
     createdAt: Date,
     updatedAt: Date,
   }, { collection: "Tenant_Product",  strict: true, })

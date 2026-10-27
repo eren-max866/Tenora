@@ -13,7 +13,7 @@ function ViewProducts() {
         async function fetchProducts() {
              try {
                 const token = sessionStorage.getItem("token");
-
+                
                 const response = await fetch(
                     "http://localhost:5000/api/products",
                     {
