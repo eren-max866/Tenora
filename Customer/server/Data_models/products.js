@@ -10,7 +10,7 @@ const productSchema= new mongoose.Schema( {  // tells Node.js application what a
     imageUrl: String,
     category: String,
     tags: [String],
-    stock: Number,
+    stock: Number,  
     isAvailable: Boolean,
     weightGrams: Number,
     dimensions: {

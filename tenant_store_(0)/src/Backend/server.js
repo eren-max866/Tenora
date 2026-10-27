@@ -13,7 +13,7 @@ const server=http.createServer((request,response)=>{
     //allow request from react development server
     response.setHeader("Access-Control-Allow-Origin","http://localhost:5173")
     response.setHeader("Access-Control-Allow-Methods","GET,POST,OPTIONS")
-    response.setHeader("Access-Control-Allow-Headers","Content-Type")
+    response.setHeader("Access-Control-Allow-Headers","Content-Type, Authorization")
 
     //Handle browser CORS preflight Request
     if (request.method === "OPTIONS"){

@@ -53,11 +53,20 @@ function TenantDashboard(){
             <button onClick={()=> navigate("/add-product")}> Add Product </button>
           </div>
 
+         
           <div className="dashboard-card">
-            <h3>Orders</h3>
-            <p>View and manage customer orders.</p>
-            <button disabled>Coming Soon</button>
+              <h3>Products</h3>
+              <p>Manage your store products.</p>
+
+              <button onClick={() => navigate("/add-product")}>
+                  Add Product
+              </button>
+
+              <button onClick={() => navigate("/view-products")}>
+                  View Products
+              </button>
           </div>
+
 
           <div className="dashboard-card">
             <h3>Store Settings</h3>

@@ -34,8 +34,11 @@ function TenantLogin(){
             }else{  // login succedd
                 setMessage(`welcome to ${data.ten.storeName}`)
                 console.log("logged in tenant:",data.ten)
-
+                // Store the tenant data in session storage for later use
                 sessionStorage.setItem("tenant", JSON.stringify(data.ten));
+                // Store the token in session storage for later use
+                sessionStorage.setItem("token", data.token);
+                
                 navigate("/dashboard", { replace: true});  // // Redirect to the tenant's dashboard
                 
             }

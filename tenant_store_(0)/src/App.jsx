@@ -3,6 +3,7 @@ import TenantLogin from "./Frontend/Pages/TenantLogin";
 import { BrowserRouter,Routes,Route,Navigate } from "react-router-dom";
 import AddProduct from "./Frontend/Pages/AddProduct";
 import Products from "./Frontend/Pages/products";
+import ViewProducts from "./Frontend/Pages/ViewProducts.jsx";
 
 function Run(){
     return (
@@ -13,6 +14,7 @@ function Run(){
         <Route path="*" element={<Navigate to="/login" replace />} />  {/*Unknown URLs fallback route The * pattern matches URLs that do not match your other route definition*/}
         <Route path= "/add-product" element={<AddProduct />} />  {/*falls onto the add product section form */}
         <Route path="/products" element={<Products />} />
+        <Route path="/view-products" element={<ViewProducts />} />  {/*\ */}
     </Routes>
     </BrowserRouter> 
     )
