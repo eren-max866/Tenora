@@ -17,7 +17,7 @@ mongoose.connect("mongodb://localhost:27017/Project")
 const app=express()   //creates your Express application and stores it in the variable app
 app.use(express.json()) // creates middleware that parses incoming JSON request bodies.
 app.use(cors({// /allows requests from different origins
-    origin: "http://localhost:5173",
+    origin: "http://localhost:5052",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]

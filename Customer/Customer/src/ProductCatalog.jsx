@@ -227,6 +227,11 @@ const categories = ["All", ...uniqueCategories];  // Add "All" option to the beg
               ? "♥ Liked"
               : "♡ Like"}
           </button>
+          <button
+            className="add-cart-button"
+            onClick={() => handleEnquiry(product)} >
+            Enquiry Now
+        </button>
             <button
               className="view-button"
               onClick={() => setSelectedProduct(product)}
