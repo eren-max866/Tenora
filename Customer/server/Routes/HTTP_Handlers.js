@@ -1,5 +1,7 @@
 import CustomerModel from "../Data_models/data.js"
 import ProductModel from "../Data_models/products.js"
+import EnquiryModel from "../Data_models/enquiry.js"
+
 
 export function Backend(request,response){
     response.send("hey, Backend is running ") // just to check backend is running
@@ -33,7 +35,6 @@ export async function  Login (request,response){
         })
         .catch((error) => { response.json(error)})
     }
-
 
 // Logout + delete Cookies
 export function Logout(request,response){
@@ -101,3 +102,53 @@ export async function FetchDataProfile (request, response) {
 
 
 
+
+
+export async function handlenquiry(request, response) {
+    try{
+     // Check whether the customer is logged in
+        if (!request.session.customerId) {
+            return response.status(401).json({
+                message: "Please log in first"
+            }) }
+
+    // get Product details from request body
+    const {  productId, message } = request.body;
+
+    if (!productId || !message) {
+        return response.status(400).json({
+            message: "Missing required fields"
+        });
+    }
+
+    // getting all the other details to feed the enquiry model
+    const product = await ProductModel.findById(productId);  // from it we extract all the details of product like :  product._id, product.name, product.tenantId
+    const customer = await CustomerModel.findById(request.session.customerId); // t provides customer._id, customer.name, and customer.email.
+    if (!product || !customer) {
+        return response.status(404).json({
+            message: "Product or customer not found"
+        });
+    }
+
+    // saving the enquiry to the database
+    const newEnquiry = new EnquiryModel({
+        tenantId: product.tenantId,
+        customerId: customer._id.toString(),
+        productId: product._id.toString(),
+        productName: product.name,
+        customername: customer.name,
+        customerEmail:  customer.email,
+        message: message
+    });
+    await newEnquiry.save();
+    response.status(201).json({
+        message: "Enquiry submitted successfully",
+        enquiry: newEnquiry   // puts that data inside the enquiry property for frontend to read
+    });
+    }catch(error){
+        console.log("Error handling enquiry:", error);
+        response.status(500).json({
+            message: "Failed to submit enquiry"
+        });
+    }
+}

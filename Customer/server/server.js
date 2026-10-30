@@ -4,7 +4,7 @@ import cors from 'cors'
 import session from "express-session"
 import "dotenv/config"
 import MongoStore from "connect-mongo"
-import {Backend,Signup,Login,Logout} from "./Routes/HTTP_Handlers.js"
+import {Backend,Signup,Login,Logout, handlenquiry} from "./Routes/HTTP_Handlers.js"
 import {FetchData,FetchDataProfile} from "./Routes/HTTP_Handlers.js"
 import { checkSession, FetchLikedProduct, addLikeProduct , likeDelete} from "./Routes/LikeSession_handler.js"
 
@@ -71,6 +71,8 @@ app.post("/api/likes/:productId", addLikeProduct)
 
 // unlike product
 app.delete("/api/likes/:productId", likeDelete)
+
+app.post("/api/enquiry", handlenquiry)  // handles the enquiry form submission  
 
 app.listen(PORT,()=>{
     console.log(`server is listening on PORT ${PORT}`);

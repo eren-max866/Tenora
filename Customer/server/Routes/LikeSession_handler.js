@@ -42,7 +42,7 @@ export async function FetchLikedProduct(request,response){
        });
      }
  
-     response.json(customer.likedProducts);   ////sends the value of likedProducts as JSON.
+     response.json(customer.likedProducts);   //sends the value of likedProducts as JSON.
    } catch (error) {
      console.error(error);
      response.status(500).json({
@@ -54,9 +54,9 @@ export async function FetchLikedProduct(request,response){
 
  export async function addLikeProduct (request,response){
     try{
-        if(!request.session.customerId){return res.status(401).json({message:"please Login"})}
+        if(!request.session.customerId){return response.status(401).json({message:"please Login"})}
 
-        const productId=request.param.productID  //req.params contains the values of dynamic URL parameters.
+        const productId=request.params.productId  //req.params contains the values of dynamic URL parameters.
         const product=await ProductModel.findById(productId)// Verify the product exists in your product collection
    
         if (!product) {  // product was not found
@@ -66,14 +66,14 @@ export async function FetchLikedProduct(request,response){
         }
         
         await CustomerModel.findByIdAndUpdate(  //finds the customer by MongoDB's _id and updates their record.
-            req.session.customerId,{  //identifies which customer's record should be updated.
+            request.session.customerId,{  //identifies which customer's record should be updated.
                  $addToSet: { likedProducts: productId //Add the product to the liked-products  ($addToSet adds the product ID to the likedProducts array only if that value is not already present)
         } } )
 
-        response.json({message:"Product liked", productID}) 
+        response.json({message:"Product liked", productId}) 
     }catch(error){
         console.error(error);
-    res.status(500).json({
+    response.status(500).json({
       message: "Could not like product"
     }) } }
 

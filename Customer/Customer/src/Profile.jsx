@@ -90,7 +90,7 @@ function Profile() {
                     {"👤"}
                 </div>
 
-                <h2>{customer.name || "Customer"}</h2>   // this come from react state variable 'customer' which is set from the API response
+                <h2>{customer.name || "Customer"}</h2>   {/* state variable 'customer' which is set from the API response*/}
 
                 {error && <p className="profile-error">{error}</p>}
 

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProductCatalog.css";
+import axios from "axios";
 
 const API_URL = "http://localhost:5053";
 
@@ -17,7 +18,7 @@ function ProductCatalog() {
   const [error, setError] = useState("");
   const [likeMessage, setLikeMessage] = useState("");
   const [savingLike, setSavingLike] = useState(null);
-
+  const [enquiryMessage,setEnquiryMessage]=useState("");
   const navigate = useNavigate();
 
   // Get the product's ID.
@@ -54,7 +55,7 @@ function ProductCatalog() {
   useEffect(() => {
     async function fetchLikes() {
       try {
-        const response = await fetch(`${API_URL}/api/likes`, {
+        const response = await fetch("http://localhost:5053/api/likes", {
           method: "GET",
           credentials: "include"
         });
@@ -83,7 +84,19 @@ function ProductCatalog() {
   }, []);
 
 
-
+  async function sendEnquiry(productId,message) {
+    try {
+      const response=await axios.post("http://localhost:5053/api/enquiry", {
+        productId: productId,   message: message   },
+        {withCredentials: true} 
+      )
+      console.log(response.data)
+      alert("Enquiry sent successfully!")
+    } catch (error) {
+      console.error("Error sending enquiry:", error.response?.data || error.message);
+      alert("Failed to send enquiry. Please try again.");
+    }
+  }
 
   // Like or unlike a product using the backend.
   async function toggleLike(product) {
@@ -229,7 +242,7 @@ const categories = ["All", ...uniqueCategories];  // Add "All" option to the beg
           </button>
           <button
             className="add-cart-button"
-            onClick={() => handleEnquiry(product)} >
+            onClick={() => setSelectedProduct(product)} >
             Enquiry Now
         </button>
             <button
@@ -295,6 +308,28 @@ const categories = ["All", ...uniqueCategories];  // Add "All" option to the beg
               ? "♥ Liked"
               : "♡ Like"}
           </button>
+
+          {/* Enquiry button */}
+          <h3>Send an Enquiry</h3>
+
+<textarea
+    value={enquiryMessage}
+    onChange={(event) =>
+        setEnquiryMessage(event.target.value)
+    }
+    placeholder="Write your enquiry here..."
+/>
+
+<button
+    onClick={async () => {
+        await sendEnquiry(
+            selectedProduct._id,
+            enquiryMessage
+        );
+    }}
+>
+    Submit Enquiry
+</button>
         </div>
       </div>
     );
@@ -393,6 +428,44 @@ const categories = ["All", ...uniqueCategories];  // Add "All" option to the beg
       )}
 
       {displayDetails()}
+
+    {selectedProduct && (
+    <div className="enquiry-form">
+
+        <h2>Enquire About Product</h2>
+
+        <h3>{selectedProduct.name}</h3>
+
+        <textarea
+            value={enquiryMessage}
+            onChange={(event) =>
+                setEnquiryMessage(event.target.value)
+            }
+            placeholder="Write your enquiry here..."
+        />
+
+        <button
+            onClick={() => {
+                sendEnquiry(
+                    selectedProduct._id,
+                    enquiryMessage
+                );
+            }}
+        >
+            Submit Enquiry
+        </button>
+
+        <button
+            onClick={() => {
+                setSelectedProduct(null);
+                setEnquiryMessage("");
+            }}
+        >
+            Cancel
+        </button>
+
+    </div>
+)}
     </div>
   );
 }

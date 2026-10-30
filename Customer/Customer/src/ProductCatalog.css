@@ -217,3 +217,20 @@ button {
 .enquiry-button:hover {
     background-color: #333;
 }
+
+.enquiry-form {
+    background: white;
+    color: black;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.enquiry-form textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}

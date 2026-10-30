@@ -2,6 +2,9 @@ import mongoose from "mongoose"
 //Writing this schema does not delete or duplicate your existing product data.
 const productSchema= new mongoose.Schema( {  // tells Node.js application what a product is expected to look like.
     id: String,
+    tenantId: {
+    type: String,
+    required: true},
     name: String,
     shortDescription: String,
     description: String,

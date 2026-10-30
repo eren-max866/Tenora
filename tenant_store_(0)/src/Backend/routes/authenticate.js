@@ -2,8 +2,6 @@ import tenantModel from "../Data/tenants.js";
 import { generateToken}  from "../middleware/jwt.js"
 
 
-
-
 export function Login_backend(request,response){   //Makes the function available to other files, alsoAccepts the incoming request and the outgoing response.
     let body=""       // node js receives in chunks (https request)
 
