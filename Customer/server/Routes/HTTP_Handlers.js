@@ -129,6 +129,8 @@ export async function handlenquiry(request, response) {
             message: "Product or customer not found"
         });
     }
+console.log("Product found:", product);
+console.log("Product tenantId:", product.tenantId);
 
     // saving the enquiry to the database
     const newEnquiry = new EnquiryModel({

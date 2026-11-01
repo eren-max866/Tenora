@@ -2,6 +2,7 @@ import http from "node:http"
 import { Login_backend }  from "./routes/authenticate.js"
 import { addProduct } from "./routes/addProducts.js"
 import {getProducts} from "./routes/getProducts.js"
+import {fetchEnquiries} from "./routes/enquiryhandler.js"
 import mongoose from "mongoose"
 
 mongoose.connect("mongodb://localhost:27017/Project")
@@ -31,6 +32,7 @@ if (request.method === "GET" && request.url === "/") {
     return;
 }
 
+
 // Login route  
 
     if (request.method==="POST" && request.url==="/api/auth/login"){
@@ -58,9 +60,16 @@ if (request.method === "GET" && request.url === "/") {
         return;
     }
 
+ // get enquiries for the logged-in tenant
+if ( request.method === "GET" && request.url === "/api/enquiries"){
+    fetchEnquiries(request,response);
+    return 
+}
+
     response.writeHead(404,{"content-type":"application/json"})
     
     response.end(JSON.stringify({message:"Route not found"}))
+
 
 })
 

@@ -23,7 +23,8 @@ const productSchema= new mongoose.Schema( {  // tells Node.js application what a
     },
     createdAt: Date,
     updatedAt: Date,
-  }, { collection: "Tenant_Product",  strict: true, })
+
+  }, { timestamps : true ,collection: "Tenant_Product",  strict: true, })
 
   const ProductModel= mongoose.model("Tenant_Products",productSchema, "Tenant_Products")  //model gives your application methods to access the collection you already have
 
