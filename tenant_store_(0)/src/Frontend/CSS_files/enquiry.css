@@ -1,0 +1,102 @@
+
+/* Main page */
+.enquiries-page {
+    padding: 30px;
+    min-height: 100vh;
+    background-color: #f5f6fa;
+    color: #222;
+}
+
+/* Page heading */
+.enquiries-header {
+    margin-bottom: 25px;
+}
+
+.enquiries-header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.enquiries-header p {
+    color: #777;
+    font-size: 15px;
+}
+
+/* Enquiry container */
+.enquiries-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Individual enquiry card */
+.enquiry-card {
+    background-color: #fff;
+    padding: 22px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enquiry-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Product name */
+.enquiry-card h3 {
+    font-size: 19px;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+/* Enquiry information */
+.enquiry-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.enquiry-card strong {
+    color: #222;
+}
+
+/* Status */
+.enquiry-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Loading and empty messages */
+.enquiries-message {
+    color: #777;
+    font-size: 16px;
+    padding: 20px 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .enquiries-page {
+        padding: 18px;
+    }
+
+    .enquiries-header h1 {
+        font-size: 23px;
+    }
+
+    .enquiries-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.enquiries-page {
+    background-color: red !important;
+}

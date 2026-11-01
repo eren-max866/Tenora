@@ -25,9 +25,9 @@ function TenantDashboard(){
     } 
 
     function HandleLogout(){
-        sessionStorage.removeItem("tenant")
+        sessionStorage.removeItem("token")
         setTenant(null)
-        navigate("/login",{replace:true}) // replace:true helps prevent the Back button from returning directly to the dashboard history entry.
+        navigate("/login",{replace:true}); {/*replace:true helps prevent the Back button from returning directly to the dashboard history entry. */}
     }
 
       return (  // UI Interface
@@ -46,14 +46,7 @@ function TenantDashboard(){
           Manage your online store from one place.
         </p>
 
-        <div className="dashboard-grid">
-          <div className="dashboard-card">
-            <h3>Products</h3>
-            <p>Manage your store products.</p>
-            <button onClick={()=> navigate("/add-product")}> Add Product </button>
-          </div>
-
-         
+               
           <div className="dashboard-card">
               <h3>Products</h3>
               <p>Manage your store products.</p>
@@ -67,18 +60,27 @@ function TenantDashboard(){
               </button>
           </div>
 
+          <div className="dashboard-card">
+            <h3>Customer Enquiries</h3>
+             <p>View messages and enquiries received from customers.</p>
+
+             <button onClick={() => navigate("/enquiries")}>
+                  View Enquiries
+              </button>
+          </div>
+
 
           <div className="dashboard-card">
             <h3>Store Settings</h3>
             <p>Manage your store information.</p>
             <button disabled>Coming Soon</button>
           </div>
+          </main>
         </div>
-      </main>
-    </div>
-  );
-}
+    
 
+      )
+    }
 export default TenantDashboard;
 
 

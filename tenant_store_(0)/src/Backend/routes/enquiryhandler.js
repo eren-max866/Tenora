@@ -11,8 +11,9 @@ export async function fetchEnquiries(request, response) {
          }
          //get tenant id from verified JWT token
          const tenantId= request.tenant.id
+
         console.log("Tenant MongoDB connection:", mongoose.connection.readyState);
-console.log("Enquiry Model connection:", EnquiryModel.db.readyState);
+        console.log("Enquiry Model connection:", EnquiryModel.db.readyState);
          // find enqueries belonging to this specific tenant 
          const enquiries = await EnquiryModel.find({tenantId: tenantId})
          response.writeHead(200,{"Content-Type":"application/json"})

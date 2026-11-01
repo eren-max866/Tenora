@@ -4,6 +4,7 @@ import { BrowserRouter,Routes,Route,Navigate } from "react-router-dom";
 import AddProduct from "./Frontend/Pages/AddProduct";
 import Products from "./Frontend/Pages/products";
 import ViewProducts from "./Frontend/Pages/ViewProducts.jsx";
+import EnquiryPage from "./Frontend/Pages/enquiry.jsx"
 
 function Run(){
     return (
@@ -15,6 +16,7 @@ function Run(){
         <Route path= "/add-product" element={<AddProduct />} />  {/*falls onto the add product section form */}
         <Route path="/products" element={<Products />} />
         <Route path="/view-products" element={<ViewProducts />} />  {/*\ */}
+        <Route path="/enquiries" element={<EnquiryPage />} />  {/*\ */}
     </Routes>
     </BrowserRouter> 
     )
