@@ -10,7 +10,7 @@ function Products() {
         async function fetchProducts() {
             try {
                 const response = await fetch(
-                    "http://localhost:5000/api/products"
+                    "http://localhost:4052/api/products"
                 );
 
                 const data = await response.json();

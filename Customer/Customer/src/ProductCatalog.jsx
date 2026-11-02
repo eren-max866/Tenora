@@ -429,43 +429,6 @@ const categories = ["All", ...uniqueCategories];  // Add "All" option to the beg
 
       {displayDetails()}
 
-    {selectedProduct && (
-    <div className="enquiry-form">
-
-        <h2>Enquire About Product</h2>
-
-        <h3>{selectedProduct.name}</h3>
-
-        <textarea
-            value={enquiryMessage}
-            onChange={(event) =>
-                setEnquiryMessage(event.target.value)
-            }
-            placeholder="Write your enquiry here..."
-        />
-
-        <button
-            onClick={() => {
-                sendEnquiry(
-                    selectedProduct._id,
-                    enquiryMessage
-                );
-            }}
-        >
-            Submit Enquiry
-        </button>
-
-        <button
-            onClick={() => {
-                setSelectedProduct(null);
-                setEnquiryMessage("");
-            }}
-        >
-            Cancel
-        </button>
-
-    </div>
-)}
     </div>
   );
 }

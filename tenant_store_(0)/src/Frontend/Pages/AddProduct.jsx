@@ -34,7 +34,7 @@ async function handleSubmit(event) {
   try {
     const token  = sessionStorage.getItem("token");
     const response = await fetch(
-      "http://localhost:5000/api/products",
+      "http://localhost:4052/api/products",
       {
         method: "POST",
         headers: {
@@ -74,7 +74,7 @@ async function handleSubmit(event) {
   return (
     <div className="add-product-page">
       <header className="add-product-header">
-        <h1>StoreHub</h1>
+        <h1>Tenora</h1>
 
         <button
           type="button"

@@ -19,7 +19,7 @@ function TenantLogin(){
         setLoading(true)    // indicate request has started 
         try{
             const response =await fetch(     // fetch: http request to server , api.auth/login is login end point defined in both react and node
-                "http://localhost:5000/api/auth/login",
+                "http://localhost:4052/api/auth/login",
                 {
                     method:"POST",    
                     headers:{"content-Type":"application/json"},    // tells backend that request body contain JSON Data
@@ -55,7 +55,7 @@ function TenantLogin(){
     return(
         <div className="Login-page">
             <form className="login-card" onSubmit={handleSubmit} >
-                <h1>StoreHub</h1>
+                <h1>Tenora</h1>
                 <h2>Tenant Login</h2>
                 <p>Sign in to manage ur store</p>
                 {message && <p>{message}</p>}

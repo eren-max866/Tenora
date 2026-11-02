@@ -26,60 +26,83 @@ function TenantDashboard(){
 
     function HandleLogout(){
         sessionStorage.removeItem("token")
+        sessionStorage.removeItem("tenant")
         setTenant(null)
         navigate("/login",{replace:true}); {/*replace:true helps prevent the Back button from returning directly to the dashboard history entry. */}
     }
 
       return (  // UI Interface
+  
     <div className="dashboard-page">
-      <header className="dashboard-header">
-        <h1>StoreHub</h1>
-        <button onClick={HandleLogout}>Logout</button>
-      </header>
 
-      <main className="dashboard-content">
-        <p className="dashboard-label">TENANT DASHBOARD</p>
+        <header className="dashboard-header">
+            <h1>Tenora</h1>
+            <button onClick={HandleLogout}>Logout</button>
+        </header>
 
-        <h2>Welcome, {tenant.storeName}</h2>
+        <main className="dashboard-content">
 
-        <p className="dashboard-description">
-          Manage your online store from one place.
-        </p>
+            <p className="dashboard-label">TENANT DASHBOARD</p>
 
-               
-          <div className="dashboard-card">
-              <h3>Products</h3>
-              <p>Manage your store products.</p>
+            <h2>Welcome, {tenant.storeName}</h2>
 
-              <button onClick={() => navigate("/add-product")}>
-                  Add Product
-              </button>
+            <p className="dashboard-description">
+                Manage your online store from one place.
+            </p>
 
-              <button onClick={() => navigate("/view-products")}>
-                  View Products
-              </button>
-          </div>
+            <div className="dashboard-grid">
 
-          <div className="dashboard-card">
-            <h3>Customer Enquiries</h3>
-             <p>View messages and enquiries received from customers.</p>
+                {/* Products Card */}
+                <div className="dashboard-card">
+                    <div className="card-icon">📦</div>
 
-             <button onClick={() => navigate("/enquiries")}>
-                  View Enquiries
-              </button>
-          </div>
+                    <h3>Products</h3>
+                    <p>Manage your store products.</p>
 
+                    <div className="card-buttons">
+                        <button onClick={() => navigate("/add-product")}>
+                            Add Product
+                        </button>
 
-          <div className="dashboard-card">
-            <h3>Store Settings</h3>
-            <p>Manage your store information.</p>
-            <button disabled>Coming Soon</button>
-          </div>
-          </main>
-        </div>
-    
+                        <button onClick={() => navigate("/view-products")}>
+                            View Products
+                        </button>
+                    </div>
+                </div>
 
-      )
+                {/* Customer Enquiries Card */}
+                <div className="dashboard-card">
+                    <div className="card-icon">✉️</div>
+
+                    <h3>Customer Enquiries</h3>
+                    <p>
+                        View messages and enquiries received from customers.
+                    </p>
+
+                    <div className="card-buttons">
+                        <button onClick={() => navigate("/enquiries")}>
+                            View Enquiries
+                        </button>
+                    </div>
+                </div>
+
+                {/* Store Settings Card */}
+                <div className="dashboard-card">
+                    <div className="card-icon">⚙️</div>
+
+                    <h3>Store Settings</h3>
+                    <p>Manage your store information.</p>
+
+                    <div className="card-buttons">
+                        <button disabled>Coming Soon</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+);
+
     }
 export default TenantDashboard;
 

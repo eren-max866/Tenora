@@ -38,7 +38,7 @@ export function Login_backend(request,response){   //Makes the function availabl
                         return             }
 
             // generate a JWT token for the successful login
-            const token = generateToken(ten)
+            const token = generateToken(ten._id.toString())
 
              response.writeHead(200, {
                         "Content-Type": "application/json"

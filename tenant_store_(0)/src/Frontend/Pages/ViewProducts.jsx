@@ -13,9 +13,9 @@ function ViewProducts() {
         async function fetchProducts() {
              try {
                 const token = sessionStorage.getItem("token");
-                console.log("Token:", token);
+               
                 const response = await fetch(
-                    "http://localhost:5000/api/products",
+                    "http://localhost:4052/api/products",
                     {
                         method: "GET",
                         headers: {
